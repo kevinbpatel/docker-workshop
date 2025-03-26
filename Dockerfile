@@ -15,7 +15,7 @@ RUN npm run build
 FROM node:20-alpine AS production
 WORKDIR /app
 # Copy built assets and necessary files
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/package*.json ./
 # Install production dependencies
 RUN npm ci --only=production
